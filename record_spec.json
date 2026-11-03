@@ -1,0 +1,25 @@
+{
+  "course": "24CS2016 – Building Applications using Flutter",
+  "regno": "URK23CS5015",
+  "ex_no": "8",
+  "title": "Firestore Data Retrieval",
+  "date": "",
+  "github_link": "",
+  "video_link": "",
+  "aim": "To design and implement a Flutter application that retrieves information from Google Cloud Firestore based on user search input and displays the corresponding records dynamically.",
+  "description": "Google Cloud Firestore is a NoSQL, document-oriented cloud database. The cloud_firestore plugin lets a Flutter app query collections of documents directly from the client. A common pattern for \"search as you type\" style name lookups in Firestore is a prefix range query: ordering the collection by the target field and bounding it with startAt(query) and endAt('$query\\uf8ff'), where \\uf8ff is a very high Unicode code point that sorts after virtually any normal character, so every document whose field starts with the typed prefix falls inside the range.\n\nThis experiment implements a People Search screen backed by a people collection in Firestore. A PeopleRepository service wraps the query (ordered by name, bounded with startAt/endAt, limited to 20 results, with a request timeout so a slow or unreachable backend fails fast instead of hanging). The SearchScreen holds a TextField bound to the query, triggers the repository call when the user submits, and renders the results in a ListView of PersonTile cards. Three explicit UI states are handled: the initial \"type a query\" prompt, a loading spinner while the query is in flight, and an error/empty state. Because this submission does not have a live Firebase project attached (firebase_options.dart ships with placeholder credentials and a comment telling the student to run flutterfire configure), the app detects the placeholder configuration before even calling Firebase.initializeApp and shows a clear 'Firebase not configured' banner instead of crashing or hanging — once a real project is connected the exact same search code will return live documents.",
+  "code_files": [
+    { "path": "code/lib/models/person.dart", "label": "lib/models/person.dart" },
+    { "path": "code/lib/services/people_repository.dart", "label": "lib/services/people_repository.dart" },
+    { "path": "code/lib/widgets/firebase_status_banner.dart", "label": "lib/widgets/firebase_status_banner.dart" },
+    { "path": "code/lib/widgets/person_tile.dart", "label": "lib/widgets/person_tile.dart" },
+    { "path": "code/lib/screens/search_screen.dart", "label": "lib/screens/search_screen.dart" },
+    { "path": "code/lib/firebase_options.dart", "label": "lib/firebase_options.dart" },
+    { "path": "code/lib/main.dart", "label": "lib/main.dart" }
+  ],
+  "screenshots": [
+    { "path": "screenshots/00_initial.png", "caption": "Fig 1. Search screen on first load, showing the 'Firebase not configured' banner (no live project attached yet)." },
+    { "path": "screenshots/01_search_result.png", "caption": "Fig 2. Submitting a search query ('Arun') with the graceful not-connected/no-results state. With a real Firebase project (via flutterfire configure) and documents in the 'people' collection, this same query path returns live matching records." }
+  ],
+  "result": "The Flutter application was successfully designed to retrieve information from Google Cloud Firestore based on user search input, using a prefix range query (startAt/endAt) on the 'people' collection. The search UI, loading state and graceful not-connected/empty state were all verified in the browser. Live record retrieval will be verified once the student's own Firebase project is connected via flutterfire configure."
+}
