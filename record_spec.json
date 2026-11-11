@@ -3,7 +3,7 @@
   "regno": "URK23CS5015",
   "ex_no": "8",
   "title": "Firestore Data Retrieval",
-  "date": "",
+  "date": "01/10/2026",
   "github_link": "https://github.com/girishnp17/flutter-lab8-firestore-search",
   "video_link": "",
   "aim": "To design and implement a Flutter application that retrieves information from Google Cloud Firestore based on user search input and displays the corresponding records dynamically.",
